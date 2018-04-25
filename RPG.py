@@ -135,4 +135,54 @@ character = "None"
 			int defense = 5
 			int xp_worth = (random.randint(hp*1.5,hp*2.5))
 		
-	def 
+	def item_options():
+		
+		def potion():
+			name = "Potion"
+			description = "This adds 5 HP"
+			worth = 1
+			drop_percentage = 35
+		
+		def hyper_potion():
+			name = "Hyper Potion"
+			description = "This adds 10 HP"
+			worth = 2
+			drop_percentage = 15
+		
+		def super_portion():
+			name = "Super Potion"
+			description = "This adds 20 HP"
+			worth = 5
+			drop_percentage = 5
+		
+		def apple():
+			name = "Apple"
+			description = "This adds 5 Stamina" 
+			worth = 2
+			drop_percentage = 35
+		
+		def chocolate_bar():
+			name = "Chocolate Bar" 
+			description = "This adds 10 Stamina" 
+			worth = 5
+			drop_percentage = 15
+		
+		def fruit_smoothie():
+			name = "Fruit Smoothie"
+			description = "This adds 10 Stamina and 5 HP"
+			worth = 7
+			drop_percentage = 10
+			
+		def chicken_breast():
+			name = "Chicken Breast"
+			description = "This adds 20 Stamina"
+			worth = 7
+			drop_percentage = 5
+		
+		def avocado_toast():
+			name = "Avocado Toast"
+			description = "This adds 5 Stamina and 5 HP. It also increases your Wisdom by 1" 
+			worth = 10
+			drop_percentage = 5
+			
+			#Add drop type values to try and increase the variety of dropped items
