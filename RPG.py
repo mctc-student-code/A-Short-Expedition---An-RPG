@@ -135,7 +135,7 @@ character = "None"
 			int defense = 5
 			int xp_worth = (random.randint(hp*1.5,hp*2.5))
 		
-	def item_options():
+	def item_options(): #these items need to be recoded as objects 
 		
 		def potion():
 			name = "Potion"
@@ -184,5 +184,109 @@ character = "None"
 			description = "This adds 5 Stamina and 5 HP. It also increases your Wisdom by 1" 
 			worth = 10
 			drop_percentage = 5
+			
+		def basic_chest_armour():
+			name = "Basic Chest Armour" 
+			description = "Adds 2 to Defense when equipt"
+			worth = 1
+			drop_percentage = 30
+			max = 1
+			ID_Type = 1 #identifies as chest armor so that I can tell the program you can only have 1 at a time
+			
+		def advance_chest_armour():
+			name = "Advance Chest Armour"
+			description = "Adds 5 to Defense and subtracts 2 from Strength when equipt"
+			worth = 3
+			drop_percentage = 20
+			max = 1
+			ID_Type = 1
+		
+		def basic_sword():
+			name = "Basic Sword" 
+			description = "Adds 2 attack when equipt"
+			worth = 1
+			drop_percentage = 30
+			max =1 
+			ID_Type = 2
+			
+		def advance_sword():
+			name = "Advance Sword"
+			description = "Adds 5 attack when equipt"
+			worth = 3
+			drop_percentage = 20
+			max = 1
+			ID_Type = 2
+			
+		def basic_shield():
+			name = "Basic Shield"
+			description = "Adds 1 to defense and subtracts 1 from strength when equipt"
+			worth = 1
+			drop_percentage = 30
+			max = 1
+			ID_Type = 3
+			
+		def advance_shield():
+			name = "Advance Shield" 
+			description = "Adds 2 to defense, subtracts 1 from strength, and subtracts 2 from dexterity"
+			worth = 3 
+			drop_percentage = 20
+			max = 1 
+			ID_Type = 3
+			
+		def basic_crossbow():
+			name = "Basic Crossbow"
+			description = "Adds 5 to attack when equipt"
+			worth = 3
+			drop_percentage = 20
+			max = 1
+			ID_Type = 4
+			
+		def advance_crossbow():
+			name = "Advance Crossbow"
+			description = "Adds 12 to attack and subtracts 2 from strength when equipt"
+			worth = 10
+			drop_percentage = 10
+			max = 1 
+			ID_Type = 4
+			
+		def basic_helmet():
+			name = "Basic Helmet" 
+			description = "Adds 1 to defense when equipt"
+			worth = 1
+			drop_percentage = 35
+			max = 1
+			ID_Type = 5
+			
+		def advance_helmet():
+			name = "Advance Helmet" 
+			description = "Adds 3 to defence and 1 to stamina when equipt" 
+			worth = 2
+			drop_percentage = 20
+			max = 1 
+			ID_Type = 5
+			
+		def basic_leggings()
+			name = "Basic Leggings"
+			description = "Adds 1 defense when equipt"
+			worth = 1
+			drop_percentage = 30
+			max = 1
+			ID_Type= 6
+			
+		def advance_leggings():
+			name = "Advance Leggings"
+			description = "Adds 3 defense and subtracts 1 dexterity when equipt"
+			worth = 3 
+			drop_percentage = 20
+			max = 1
+			ID_Type = 6
+			
+		def chainmail():
+			name = "Chainmail"
+			description = "Extra underbody armour. Add 1 to defense when equipt"
+			worth = 1
+			drop_percentage = 30
+			max = 1
+			ID_Type = 7
 			
 			#Add drop type values to try and increase the variety of dropped items
