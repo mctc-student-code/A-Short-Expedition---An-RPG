@@ -1,5 +1,17 @@
 from random import randint
 
+HP = 0
+Stamina = 0
+Intelligence = 0
+Wisdom = 0
+Luck = 0
+Strength = 0
+Defense = 0 
+Charisma = 0
+Dexterity = 0 
+character = "None"
+#these are global variables
+
 	def character_creation():
 	
 		print("You may pick a character type. Each type has different base stats.")
@@ -10,9 +22,80 @@ from random import randint
 		print("/n A Human has a base HP and Stamina of 5, a Defense of 0, and 1 for all other stats. Their special ability is regaining 1 stamina per turn.")
 		print("/n A Fairy has a base HP of 5,  Stamina of 10, Dexterity of 3, Strength of 0, and 1 for all other stats. Their special ability is regaining 1 HP per turn.")
 		
-		string character = input("Please pick your character type. Type "Mage, Elf, Goblin, Human, or Fairy" : ")
+		while character == "None": #This while loop makes the player re-pick whenever they don't have a character
+			global character = input("Please pick your character type. Type "Mage, Elf, Goblin, Human, or Fairy" : ")
+	
+			character_stats(character)
 		
 		# Could soft code these values, but I hard coded them to put them in a particular order based off HP/Stamina priority and highest to weakest
+		# Maybe put the stats printer in a separate method? To just print stats. Maybe even code 'hot keys' to print certain character stats VS all at once? 
+		
+	def character_stats(string character):
+	
+		#this chunk of code allows this method to change global variables 
+		global HP
+		global Stamina
+		global Intelligence
+		global Wisdom
+		global Luck
+		global Strength
+		global Defense 
+		global Charisma
+		global Dexterity
+		global character 
+		
+		if character == "Mage":
+			HP = 5
+			Stamina = 5
+			Intelligence = 1
+			Wisdom = 3
+			Luck = 1
+			Strength = 1
+			Defense = 1
+			Charisma = 1
+			Dexterity = 1
+		else if character == "Elf":
+			HP = 10
+			Stamina = 5
+			Intelligence = 1
+			Wisdom = 3
+			Luck = 1
+			Strength = 2
+			Defense = 1
+			Charisma = 5
+			Dexterity = 5
+		else if character == "Goblin":
+			HP = 5
+			Stamina = 10
+			Intelligence = 0
+			Wisdom = 0
+			Luck = 0
+			Strength = 5
+			Defense = 2
+			Charisma = 0
+			Dexterity = 0
+		else if character == "Human":
+			HP = 5
+			Stamina = 5
+			Intelligence = 1
+			Wisdom = 1
+			Luck = 1
+			Strength = 1
+			Defense = 0
+			Charisma = 1
+			Dexterity = 1
+		else if character == "Fairy":
+			HP = 5
+			Stamina = 10
+			Intelligence = 1
+			Wisdom = 1
+			Luck = 1
+			Strength = 0
+			Defense = 1
+			Charisma = 1
+			Dexterity = 3
+		else:
+			character = "None" #if the input does not match any of these, it will reset the character to none and ask for new input 
 
 
 	def enemy_options():
