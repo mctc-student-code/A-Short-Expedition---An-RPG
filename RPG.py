@@ -289,4 +289,37 @@ character = "None"
 			max = 1
 			ID_Type = 7
 			
+	def level_up():
+	
+		global HP
+		global Stamina
+		global Intelligence
+		global Wisdom
+		global Luck
+		global Strength
+		global Defense 
+		global Charisma
+		global Dexterity
+		
+		HP = HP + randint(1,5)
+		Stamina = Stamina + randint(1,5)
+	
+		for(i = 0; i<3; i++): #for loop that reiterates 3 times 
+			trait = randint(3,9)
+			
+			if trait == 3:	
+				Intelligence = Intelligence + randint(1,3)
+			else if trait ==4:
+				Wisdom = Wisdom + randint(1,3)
+			else if trait ==5:
+				Luck = Luck + randint(1,3)
+			else if trait == 6:
+				Strength = Strength + randint(1,3)
+			else if trait == 7: 
+				Defense = Defense + randint(1,3)
+			else if trait == 8:
+				Charisma = Charisma + randint(1,3)
+			else: 
+				Dexterity = Dexterity + randint(1,3)
+			
 			#Add drop type values to try and increase the variety of dropped items
