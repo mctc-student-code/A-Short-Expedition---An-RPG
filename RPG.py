@@ -15,6 +15,7 @@ name = "name"
 level = 0
 XP = 0
 steps = 0
+current_HP = 0
 #these are global variables
 
 	def main():
@@ -29,6 +30,13 @@ steps = 0
 		
 		while steps < 60:
 			take_a_step()
+			
+	
+		print("Congratulations on your journey, " + name + "!")
+		print("You've fought long and hard. You've even made it all the way to level " + level + "!")
+		print("What a proud " + character + " you must be!")
+		print("You've collected lots of items and battled fearlessly along the way.")
+		print("Through this effort and riches you've scored " + score() + " points! To travel again just re-run this code!")
 
 	def character_creation():
 	
@@ -61,9 +69,12 @@ steps = 0
 		global Charisma
 		global Dexterity
 		global character 
+		global current_HP
 		
+		#maybe put this in some sort of data organizer like a hashmap or array
 		if character == "Mage":
 			HP = 5
+			current_HP = HP
 			Stamina = 5
 			Intelligence = 1
 			Wisdom = 3
@@ -74,6 +85,7 @@ steps = 0
 			Dexterity = 1
 		else if character == "Elf":
 			HP = 10
+			current_HP = HP
 			Stamina = 5
 			Intelligence = 1
 			Wisdom = 3
@@ -84,6 +96,7 @@ steps = 0
 			Dexterity = 5
 		else if character == "Goblin":
 			HP = 5
+			current_HP = HP
 			Stamina = 10
 			Intelligence = 0
 			Wisdom = 0
@@ -94,6 +107,7 @@ steps = 0
 			Dexterity = 0
 		else if character == "Human":
 			HP = 5
+			current_HP = HP
 			Stamina = 5
 			Intelligence = 1
 			Wisdom = 1
@@ -104,6 +118,7 @@ steps = 0
 			Dexterity = 1
 		else if character == "Fairy":
 			HP = 5
+			current_HP = HP
 			Stamina = 10
 			Intelligence = 1
 			Wisdom = 1
@@ -351,8 +366,10 @@ steps = 0
 			#Add drop type values to try and increase the variety of dropped items
 			
 	def fight_enemy():
+		global current_HP
 		#CODE ENEMY FIGHTING
 		#ADD XP
+		
 		level_up_check()
 	
 	def special_ability():
@@ -396,10 +413,25 @@ steps = 0
 		fight_enemy() #fights an enemy
 		drop_item() #drops item
 		drop_item()
+		equip_item()
 		
 	def drop_item():
 		#CODE ITEM DROP. USE PERCENTAGES
 	
 	
+	def score():
+		score = 0
+		score = XP + score + level + inventory_count + current_HP
 		
+		return score
+		
+	def equip_item():	
+		answer = input("Would you like to equip an item? (Y or N")
+		while answer = Y:
+			item = input("Please enter the item you would like to equip")
+			if inventory.get(item):
+				
+			else:
+				print("That item is not in your inventory")
+			answer = input("Would you like to equip an item? (Y or N")
 	
