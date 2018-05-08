@@ -10,7 +10,15 @@ Defense = 0
 Charisma = 0
 Dexterity = 0 
 character = "None"
+name = "name"
+level = 0
+XP = 0
 #these are global variables
+
+	def main():
+		global name = input("Welcome brave warrior! What is your " + name + "?")
+		print("Your quest is to battle to the great beyond and retrieve what may lie there. The people of this hard drive believe there to be great riches which control these lands.")
+		character_creation()
 
 	def character_creation():
 	
@@ -108,7 +116,7 @@ character = "None"
 			int xp_worth = (random.randint(hp*1.5,hp*2.5))
 			
 		def enemy_two():
-			string name = "Random Solider" 
+			string name = "Random Soldier" 
 			int hp = (random.randint(character_level,character_level*3))
 			int stamina = 3
 			int defense = 1
@@ -187,7 +195,7 @@ character = "None"
 			
 		def basic_chest_armour():
 			name = "Basic Chest Armour" 
-			description = "Adds 2 to Defense when equipt"
+			description = "Adds 2 to Defense when equipped"
 			worth = 1
 			drop_percentage = 30
 			max = 1
@@ -195,7 +203,7 @@ character = "None"
 			
 		def advance_chest_armour():
 			name = "Advance Chest Armour"
-			description = "Adds 5 to Defense and subtracts 2 from Strength when equipt"
+			description = "Adds 5 to Defense and subtracts 2 from Strength when equipped"
 			worth = 3
 			drop_percentage = 20
 			max = 1
@@ -203,7 +211,7 @@ character = "None"
 		
 		def basic_sword():
 			name = "Basic Sword" 
-			description = "Adds 2 attack when equipt"
+			description = "Adds 2 attack when equipped"
 			worth = 1
 			drop_percentage = 30
 			max =1 
@@ -211,7 +219,7 @@ character = "None"
 			
 		def advance_sword():
 			name = "Advance Sword"
-			description = "Adds 5 attack when equipt"
+			description = "Adds 5 attack when equipped"
 			worth = 3
 			drop_percentage = 20
 			max = 1
@@ -219,7 +227,7 @@ character = "None"
 			
 		def basic_shield():
 			name = "Basic Shield"
-			description = "Adds 1 to defense and subtracts 1 from strength when equipt"
+			description = "Adds 1 to defense and subtracts 1 from strength when equipped"
 			worth = 1
 			drop_percentage = 30
 			max = 1
@@ -235,7 +243,7 @@ character = "None"
 			
 		def basic_crossbow():
 			name = "Basic Crossbow"
-			description = "Adds 5 to attack when equipt"
+			description = "Adds 5 to attack when equipped"
 			worth = 3
 			drop_percentage = 20
 			max = 1
@@ -243,7 +251,7 @@ character = "None"
 			
 		def advance_crossbow():
 			name = "Advance Crossbow"
-			description = "Adds 12 to attack and subtracts 2 from strength when equipt"
+			description = "Adds 12 to attack and subtracts 2 from strength when equipped"
 			worth = 10
 			drop_percentage = 10
 			max = 1 
@@ -251,7 +259,7 @@ character = "None"
 			
 		def basic_helmet():
 			name = "Basic Helmet" 
-			description = "Adds 1 to defense when equipt"
+			description = "Adds 1 to defense when equipped"
 			worth = 1
 			drop_percentage = 35
 			max = 1
@@ -259,7 +267,7 @@ character = "None"
 			
 		def advance_helmet():
 			name = "Advance Helmet" 
-			description = "Adds 3 to defence and 1 to stamina when equipt" 
+			description = "Adds 3 to defense and 1 to stamina when equipped" 
 			worth = 2
 			drop_percentage = 20
 			max = 1 
@@ -267,7 +275,7 @@ character = "None"
 			
 		def basic_leggings()
 			name = "Basic Leggings"
-			description = "Adds 1 defense when equipt"
+			description = "Adds 1 defense when equipped"
 			worth = 1
 			drop_percentage = 30
 			max = 1
@@ -275,7 +283,7 @@ character = "None"
 			
 		def advance_leggings():
 			name = "Advance Leggings"
-			description = "Adds 3 defense and subtracts 1 dexterity when equipt"
+			description = "Adds 3 defense and subtracts 1 dexterity when equipped"
 			worth = 3 
 			drop_percentage = 20
 			max = 1
@@ -283,13 +291,13 @@ character = "None"
 			
 		def chainmail():
 			name = "Chainmail"
-			description = "Extra underbody armour. Add 1 to defense when equipt"
+			description = "Extra underbody armour. Add 1 to defense when equipped"
 			worth = 1
 			drop_percentage = 30
 			max = 1
 			ID_Type = 7
 			
-	def level_up():
+	def level_up(int which_level):
 	
 		global HP
 		global Stamina
@@ -300,6 +308,7 @@ character = "None"
 		global Defense 
 		global Charisma
 		global Dexterity
+		global XP
 		
 		HP = HP + randint(1,5)
 		Stamina = Stamina + randint(1,5)
@@ -321,5 +330,26 @@ character = "None"
 				Charisma = Charisma + randint(1,3)
 			else: 
 				Dexterity = Dexterity + randint(1,3)
+				
+			XP = which_level-XP
+			level = level+1
 			
 			#Add drop type values to try and increase the variety of dropped items
+			
+	def fight_enemy():
+	
+	def special_ability():
+	
+	def level_up_check(int XP, int level):
+		if level == 0 && XP => 250:
+			level_up(250)
+		else if level == 1 && XP => 500:
+			level_up(500)
+		else if level == 2 && XP =>800:
+			level_up(800)
+		else if level == 3 && XP =>1000:
+			level_up(1000)
+		else level => 4 && XP => 1500:
+			level_up(1500)
+		
+	
