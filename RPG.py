@@ -1,4 +1,5 @@
 from random import randint
+import math
 
 HP = 0
 Stamina = 0
@@ -13,12 +14,21 @@ character = "None"
 name = "name"
 level = 0
 XP = 0
+steps = 0
 #these are global variables
 
 	def main():
 		global name = input("Welcome brave warrior! What is your " + name + "?")
 		print("Your quest is to battle to the great beyond and retrieve what may lie there. The people of this hard drive believe there to be great riches which control these lands.")
 		character_creation()
+		print("Ah! Thank you " + name +" the mighty " + character)
+		print("Your brave journey will first take you through this computers invisible folders. Be warned the path is treacherous and many have deleted vital files never to be seen again")
+		print("Once through these folders you may come across a theme park of disk fragmentation. From here you may be tempted to wander through many-a application and plenty of shiny bits and bobbles. Deep in the core is where you seek.")
+		print("Down the rabbithole you fall. To find the treasures this harddrive holds you must finally saunter the tombs of data past in the fiery holes of the recycling bin!")
+		print("Safe travels, " + name + ".")
+		
+		while steps < 60:
+			take_a_step()
 
 	def character_creation():
 	
@@ -309,6 +319,7 @@ XP = 0
 		global Charisma
 		global Dexterity
 		global XP
+		global level
 		
 		HP = HP + randint(1,5)
 		Stamina = Stamina + randint(1,5)
@@ -331,25 +342,64 @@ XP = 0
 			else: 
 				Dexterity = Dexterity + randint(1,3)
 				
-			XP = which_level-XP
-			level = level+1
+			XP = which_level-XP #subtracts XP used to level up
+			
+			level = level+1 #adds 1 level to global variable
+			
+			level_up_check() #This is used to make sure code doesn't break and forget to level up player that can go up two levels at once 
 			
 			#Add drop type values to try and increase the variety of dropped items
 			
 	def fight_enemy():
+		#CODE ENEMY FIGHTING
+		#ADD XP
+		level_up_check()
 	
 	def special_ability():
 	
-	def level_up_check(int XP, int level):
-		if level == 0 && XP => 250:
-			level_up(250)
-		else if level == 1 && XP => 500:
-			level_up(500)
-		else if level == 2 && XP =>800:
-			level_up(800)
-		else if level == 3 && XP =>1000:
-			level_up(1000)
-		else level => 4 && XP => 1500:
-			level_up(1500)
+	def level_up_check(): #This will check to see if user has enough XP to go up in level
+	
+		required_xp = 0
+		
+		if level >=4: #sets XP cap at 1500 after level 4
+			required_XP=1500
+		else:	
+			required_XP=250*(level+1) #designs XP increments 
+			
+		if XP>required_XP: #tests if level up is required 
+			level_up(required_XP)
+		else:
+			break
+			
+	def boss_check(): #This checks to see if the player has moved enough spaces to go further in the adventure
+		if steps => 10 && steps < 30:
+			boss_fight()
+		else if steps => 30 && steps < 60:
+			boss_fight()
+		else: 
+			boss_fight()
+			
+	def boss_fight():
+		if steps => 10 && steps < 30:
+			#CODE FIRST BOSS
+		else if steps => 30 && steps < 60:
+			#CODE SECOND BOSS
+		else: 
+			#CODE FINAL BOSS
+		
+	def take_a_step():
+		global steps #allows you to manipulate steps counter
+		boss_check() #checks if you've earned a boss yet
+		continue = input("Roll the die to determine your fate! [Press any key]")
+		roll = randint(1,6) #rolls die
+		steps = steps + roll #adds step counter
+		fight_enemy() #fights an enemy
+		drop_item() #drops item
+		drop_item()
+		
+	def drop_item():
+		#CODE ITEM DROP. USE PERCENTAGES
+	
+	
 		
 	
