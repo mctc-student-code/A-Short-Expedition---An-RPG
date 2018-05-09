@@ -303,13 +303,19 @@ def boss_check(): #This checks to see if the player has moved enough spaces to g
 def boss_fight():
 	if steps >= 10 & steps < 30:
 		#CODE FIRST BOSS
-		print("To DO")
+		print("You've fought hard through the unknown and up ahead you see your gate")
+		print("A creature fades in and out of existence. You can't make out much before you see flashing jaws lunge to attack you!")
+		
+		#Is there a way to overwrite code in the fight sequence? Or should I make a new method for each boss fight?
+		
+		print("You have defeated the dreaded ghostly foe and pass the gate into the Land of Disk Fragments")
 	elif steps >= 30 & steps < 60:
 		#CODE SECOND BOSS
-		print("TO DO")
+		print("To your left a roller coaster whizzes by, and on your right you spot a tilt-a-whirl spinning your E Drive's contents.  Further down the center a hole in the ground opens up. The recycling bin. The coast looks clear so you step forward.")
+		print("Your toes feel the edge of hole when a force pulls you back. A gruesome clown grins his teeth. Bits of disk protruding out of his body.")
 	else: 
 		#CODE FINAL BOSS
-		print("TO DO")
+		print("The harddrive glimmers below a pool of backlog. Your time has come. You reach toward the pool when a shadow overtakes the clear waters(?) The recycling bin was not quite as empty as you thought.... The conglomeration grabs hold of your wrist with it's folder fingers and application icon biceps and drags you beneath the depth.")
 			
 		
 		
