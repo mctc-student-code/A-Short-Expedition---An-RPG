@@ -19,4 +19,6 @@ I would also like to offer players the opportunity to store their score using fi
 
 Currently the characters have a lot more 'stats' than are implimented. I think it would be good to add things like 'luck' and 'dexterity' to the method in charge of enemy battles. 
 
+Current code does not have the right storage containers for large clumps of data! :(
+
 Thanks for reading!
