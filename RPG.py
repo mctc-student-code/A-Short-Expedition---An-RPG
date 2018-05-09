@@ -18,25 +18,26 @@ steps = 0
 current_HP = 0
 #these are global variables
 
-	def main():
-		global name = input("Welcome brave warrior! What is your " + name + "?")
-		print("Your quest is to battle to the great beyond and retrieve what may lie there. The people of this hard drive believe there to be great riches which control these lands.")
-		character_creation()
-		print("Ah! Thank you " + name +" the mighty " + character)
-		print("Your brave journey will first take you through this computers invisible folders. Be warned the path is treacherous and many have deleted vital files never to be seen again")
-		print("Once through these folders you may come across a theme park of disk fragmentation. From here you may be tempted to wander through many-a application and plenty of shiny bits and bobbles. Deep in the core is where you seek.")
-		print("Down the rabbithole you fall. To find the treasures this harddrive holds you must finally saunter the tombs of data past in the fiery holes of the recycling bin!")
-		print("Safe travels, " + name + ".")
+def main():
+	global name
+	name=input("Welcome brave warrior! What is your " + name + "?")
+	print("Your quest is to battle to the great beyond and retrieve what may lie there. The people of this hard drive believe there to be great riches which control these lands.")
+	character_creation()
+	print("Ah! Thank you " + name +" the mighty " + character)
+	print("Your brave journey will first take you through this computers invisible folders. Be warned the path is treacherous and many have deleted vital files never to be seen again")
+	print("Once through these folders you may come across a theme park of disk fragmentation. From here you may be tempted to wander through many-a application and plenty of shiny bits and bobbles. Deep in the core is where you seek.")
+	print("Down the rabbithole you fall. To find the treasures this harddrive holds you must finally saunter the tombs of data past in the fiery holes of the recycling bin!")
+	print("Safe travels, " + name + ".")
 		
-		while steps < 60:
-			take_a_step()
+	while steps < 60:
+		take_a_step()
 			
 	
-		print("Congratulations on your journey, " + name + "!")
-		print("You've fought long and hard. You've even made it all the way to level " + level + "!")
-		print("What a proud " + character + " you must be!")
-		print("You've collected lots of items and battled fearlessly along the way.")
-		print("Through this effort and riches you've scored " + score() + " points! To travel again just re-run this code!")
+	print("Congratulations on your journey, " + name + "!")
+	print("You've fought long and hard. You've even made it all the way to level " + level + "!")
+	print("What a proud " + character + " you must be!")
+	print("You've collected lots of items and battled fearlessly along the way.")
+	print("Through this effort and riches you've scored " + score() + " points! To travel again just re-run this code!")
 
 	def character_creation():
 	
@@ -49,7 +50,8 @@ current_HP = 0
 		print("/n A Fairy has a base HP of 5,  Stamina of 10, Dexterity of 3, Strength of 0, and 1 for all other stats. Their special ability is regaining 1 HP per turn.")
 		
 		while character == "None": #This while loop makes the player re-pick whenever they don't have a character
-			global character = input("Please pick your character type. Type "Mage, Elf, Goblin, Human, or Fairy" : ")
+			global character
+			character= input("Please pick your character type. Type "Mage, Elf, Goblin, Human, or Fairy" : ")
 	
 			character_stats(character)
 		
@@ -370,6 +372,9 @@ current_HP = 0
 		#CODE ENEMY FIGHTING
 		#ADD XP
 		
+		while enemy_current_HP> 0:
+			special_ability() #checks for characters special ability
+		
 		level_up_check()
 	
 	def special_ability():
@@ -403,11 +408,18 @@ current_HP = 0
 			#CODE SECOND BOSS
 		else: 
 			#CODE FINAL BOSS
+			
+	def get_Item_Name(int id):
+		if id == 1:
+			return "Potion"
+		else if id == 2:
+			return "Super Potion"
 		
 	def take_a_step():
 		global steps #allows you to manipulate steps counter
 		boss_check() #checks if you've earned a boss yet
 		continue = input("Roll the die to determine your fate! [Press any key]")
+		special_ability() #checks for special ability ==some characters can get extra rolls==
 		roll = randint(1,6) #rolls die
 		steps = steps + roll #adds step counter
 		fight_enemy() #fights an enemy
@@ -426,12 +438,19 @@ current_HP = 0
 		return score
 		
 	def equip_item():	
-		answer = input("Would you like to equip an item? (Y or N")
-		while answer = Y:
-			item = input("Please enter the item you would like to equip")
+		answer = input("Would you like to equip/unequip or use an item? (E or U or N")
+		while answer != N:
+			item = input("Please enter the item you would like to equip or use")
 			if inventory.get(item):
+			
+			else if equip.get(item):
 				
 			else:
 				print("That item is not in your inventory")
-			answer = input("Would you like to equip an item? (Y or N")
+			answer = input("Would you like to equip or use an item? (Y or N")
+	
+	
+	#TO DO 
+	# Code Database online to store Scores
+	# Add Inventory Table to store items
 	
