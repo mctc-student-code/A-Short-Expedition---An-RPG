@@ -44,6 +44,7 @@ def main():
 
 	def character_creation():
 	
+		global character
 		print("You may pick a character type. Each type has different base stats.")
 		print("/n Your options are: Mage, Elf, Goblin, Human, or Fairy")
 		print("/n A Mage has a base HP + Stamina of 5, a base Wisdom of 3, and 1 for all other stats. Their special ability is a 25% chance of obtaining an extra move roll.")
@@ -53,15 +54,14 @@ def main():
 		print("/n A Fairy has a base HP of 5,  Stamina of 10, Dexterity of 3, Strength of 0, and 1 for all other stats. Their special ability is regaining 1 HP per turn.")
 		
 		while character == "None": #This while loop makes the player re-pick whenever they don't have a character
-			global character
-			character= input("Please pick your character type. Type "Mage, Elf, Goblin, Human, or Fairy" : ")
+			character=input("Please pick your character type. Type 'Mage, Elf, Goblin, Human, or Fairy' : ")
 	
 			character_stats(character)
 		
 		# Could soft code these values, but I hard coded them to put them in a particular order based off HP/Stamina priority and highest to weakest
 		# Maybe put the stats printer in a separate method? To just print stats. Maybe even code 'hot keys' to print certain character stats VS all at once? 
 		
-	def character_stats(string character):
+	def character_stats():
 	
 		#this chunk of code allows this method to change global variables 
 		global HP
@@ -90,7 +90,7 @@ def main():
 			Defense = 1
 			Charisma = 1
 			Dexterity = 1
-		else if character == "Elf":
+		elif character == "Elf":
 			HP = 10
 			current_HP = HP
 			Stamina = 5
@@ -102,7 +102,7 @@ def main():
 			Defense = 1
 			Charisma = 5
 			Dexterity = 5
-		else if character == "Goblin":
+		elif character == "Goblin":
 			HP = 5
 			current_HP = HP
 			Stamina = 10
@@ -114,7 +114,7 @@ def main():
 			Defense = 2
 			Charisma = 0
 			Dexterity = 0
-		else if character == "Human":
+		elif character == "Human":
 			HP = 5
 			current_HP = HP
 			Stamina = 5
@@ -126,7 +126,7 @@ def main():
 			Defense = 0
 			Charisma = 1
 			Dexterity = 1
-		else if character == "Fairy":
+		elif character == "Fairy":
 			HP = 5
 			current_HP = HP
 			Stamina = 10
@@ -162,7 +162,7 @@ def main():
 		drop_items_food.add(4, "Apple", "This adds 5 Stamina", 2, 35)
 		drop_items_food.add(5, "Chocolate Bar", "This adds 10 Stamina", 5, 15)
 		drop_items_food.add(6, "Fruit Smoothie", "This adds 10 Stamina and 5 HP", 7, 10)
-		drop_items_food.add(7, "Chicken Breast", "This adds 20 Stamina" 7, 10)
+		drop_items_food.add(7, "Chicken Breast", "This adds 20 Stamina", 7, 10)
 		drop_items_food.add(8, "Avocado Toast", "This adds 5 Stamina and 5 HP. It also increases your Wisdom by 1", 10, 5)
 		
 		drop_items_armor = []
@@ -182,7 +182,7 @@ def main():
 		drop_items_armor.add(11, 6, "Advance Leggings", "Adds 3 defense and subtracts 1 dexterity when equipped", 3, 20)
 		drop_items_armor.add(12, 7, "Chainmail", "Extra underbody armour. Add 1 to defense when equipped", 1, 30)
 			
-	def level_up(int which_level):
+	def level_up(which_level):
 	
 		global HP
 		global Stamina
@@ -199,20 +199,20 @@ def main():
 		HP = HP + randint(1,5)
 		Stamina = Stamina + randint(1,5)
 	
-		for(i = 0; i<3; i++): #for loop that reiterates 3 times 
+		for i in range(3): #for loop that reiterates 3 times 
 			trait = randint(3,9)
 			
 			if trait == 3:	
 				Intelligence = Intelligence + randint(1,3)
-			else if trait ==4:
+			elif trait ==4:
 				Wisdom = Wisdom + randint(1,3)
-			else if trait ==5:
+			elif trait ==5:
 				Luck = Luck + randint(1,3)
-			else if trait == 6:
+			elif trait == 6:
 				Strength = Strength + randint(1,3)
-			else if trait == 7: 
+			elif trait == 7: 
 				Defense = Defense + randint(1,3)
-			else if trait == 8:
+			elif trait == 8:
 				Charisma = Charisma + randint(1,3)
 			else: 
 				Dexterity = Dexterity + randint(1,3)
@@ -242,7 +242,7 @@ def main():
 			else:
 				if current_stamina <=0:
 					special_ability() #checks for characters special ability
-					print("You can't attack! You need more stamina!)
+					print("You can't attack! You need more stamina!")
 					equip_item() #allows user to use item to get more stamina
 					print("The " + enemy_name + " is attacking you!")
 					current_HP = current_HP - (enemy_attack-defense)
@@ -270,15 +270,32 @@ def main():
 		level_up_check()
 	
 	def special_ability():
-		if character = "Mage":
-		
-		else if character = "Elf":
-		
-		else if character = "Human":
-		
-		else if character = "Goblin":
-		
+	global steps
+	global current_stamina
+		if character == "Mage":
+		roll = randint(1,4)
+		if roll = 1:	
+			roll_die = randint(1,6)
+			steps = steps+roll_die
+			print("You added extra spaces!!!")
+		else:
+			break
+
+		elif character == "Elf":
+			roll = randint(1,10)
+			if roll = 1:	
+				print("You skip this battle!")
+				break
+			else:
+				break
+		elif character == "Human":
+			current_stamina = current_stamina+1
+		elif character == "Goblin":
+			if enemy_HP <= current_HP*.5: 
+				print("You intimidated your opponent!")
+				break
 		else: #this one is if fairys exist
+			current_HP = current_HP+1
 		
 	
 	def level_up_check(): #This will check to see if user has enough XP to go up in level
@@ -296,31 +313,29 @@ def main():
 			break
 			
 	def boss_check(): #This checks to see if the player has moved enough spaces to go further in the adventure
-		if steps => 10 && steps < 30:
+		if steps >= 10 & steps < 30:
 			boss_fight()
-		else if steps => 30 && steps < 60:
+		elif steps >= 30 & steps < 60:
 			boss_fight()
 		else: 
 			boss_fight()
 			
 	def boss_fight():
-		if steps => 10 && steps < 30:
+		if steps >= 10 & steps < 30:
 			#CODE FIRST BOSS
-		else if steps => 30 && steps < 60:
+			break
+		elif steps >= 30 & steps < 60:
 			#CODE SECOND BOSS
+			break
 		else: 
 			#CODE FINAL BOSS
-			
-	def get_Item_Name(int id):
-		if id == 1:
-			return "Potion"
-		else if id == 2:
-			return "Super Potion"
+			break
+		
 		
 	def take_a_step():
 		global steps #allows you to manipulate steps counter
 		boss_check() #checks if you've earned a boss yet
-		continue = input("Roll the die to determine your fate! [Press any key]")
+		continue_check=input("Roll the die to determine your fate! [Press any key]")
 		special_ability() #checks for special ability ==some characters can get extra rolls==
 		roll = randint(1,6) #rolls die
 		steps = steps + roll #adds step counter
@@ -330,13 +345,13 @@ def main():
 		equip_item()
 		
 	def drop_item():
+		break
 		#CODE ITEM DROP. USE PERCENTAGES
 	
 	
 	def score():
 		score = 0
 		score = XP + score + level + inventory_count + current_HP
-		
 		return score
 		
 	def equip_item():	
@@ -344,15 +359,13 @@ def main():
 		while answer != N:
 			item = input("Please enter the item you would like to equip or use")
 			if inventory.get(item):
+				break
 			
-			else if equip.get(item):
-				
+			elif equip.get(item):
+				break
 			else:
 				print("That item is not in your inventory")
 			answer = input("Would you like to equip or use an item? (Y or N")
 	
 	
-	#TO DO 
-	# Code Database online to store Scores
-	# Add Inventory Table to store items
 	
