@@ -270,30 +270,31 @@ def main():
 		level_up_check()
 	
 	def special_ability():
-	global steps
-	global current_stamina
+		global steps
+		global current_stamina
 		if character == "Mage":
-		roll = randint(1,4)
-		if roll = 1:	
-			roll_die = randint(1,6)
-			steps = steps+roll_die
-			print("You added extra spaces!!!")
-		else:
-			break
-
-		elif character == "Elf":
-			roll = randint(1,10)
-			if roll = 1:	
-				print("You skip this battle!")
-				break
+			roll = randint(1,4)
+			if roll == 1:	
+				roll_die = randint(1,6)
+				steps = steps+roll_die
+				print("You added extra spaces!!!")
 			else:
-				break
+				print("Nothing happened")
+				
+		elif character == "Elf":
+			roll == randint(1,10)
+			if roll == 1:	
+				print("You skip this battle!")
+				
+			else:
+				print("Nothing happened")
 		elif character == "Human":
 			current_stamina = current_stamina+1
 		elif character == "Goblin":
 			if enemy_HP <= current_HP*.5: 
 				print("You intimidated your opponent!")
-				break
+			else:
+				print("Nothing happened")
 		else: #this one is if fairys exist
 			current_HP = current_HP+1
 		
@@ -310,7 +311,7 @@ def main():
 		if XP>required_XP: #tests if level up is required 
 			level_up(required_XP)
 		else:
-			break
+			required_xp = 0
 			
 	def boss_check(): #This checks to see if the player has moved enough spaces to go further in the adventure
 		if steps >= 10 & steps < 30:
@@ -323,13 +324,14 @@ def main():
 	def boss_fight():
 		if steps >= 10 & steps < 30:
 			#CODE FIRST BOSS
-			break
+			print("To DO")
 		elif steps >= 30 & steps < 60:
 			#CODE SECOND BOSS
-			break
+			print("TO DO")
 		else: 
 			#CODE FINAL BOSS
-			break
+			print("TO DO")
+			
 		
 		
 	def take_a_step():
@@ -345,7 +347,7 @@ def main():
 		equip_item()
 		
 	def drop_item():
-		break
+		print("TO DO")
 		#CODE ITEM DROP. USE PERCENTAGES
 	
 	
