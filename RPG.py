@@ -1,5 +1,6 @@
 from random import randint
 import math
+import sys
 
 HP = 0
 Stamina = 0
@@ -16,10 +17,12 @@ level = 0
 XP = 0
 steps = 0
 current_HP = 0
+current_stamina = 0
 #these are global variables
 
 def main():
 	global name
+	enemy_options()
 	name=input("Welcome brave warrior! What is your " + name + "?")
 	print("Your quest is to battle to the great beyond and retrieve what may lie there. The people of this hard drive believe there to be great riches which control these lands.")
 	character_creation()
@@ -72,12 +75,14 @@ def main():
 		global Dexterity
 		global character 
 		global current_HP
+		global current_stamina
 		
 		#maybe put this in some sort of data organizer like a hashmap or array
 		if character == "Mage":
 			HP = 5
 			current_HP = HP
 			Stamina = 5
+			current_stamina = Stamina
 			Intelligence = 1
 			Wisdom = 3
 			Luck = 1
@@ -89,6 +94,7 @@ def main():
 			HP = 10
 			current_HP = HP
 			Stamina = 5
+			current_stamina = Stamina
 			Intelligence = 1
 			Wisdom = 3
 			Luck = 1
@@ -100,6 +106,7 @@ def main():
 			HP = 5
 			current_HP = HP
 			Stamina = 10
+			current_stamina = Stamina
 			Intelligence = 0
 			Wisdom = 0
 			Luck = 0
@@ -111,6 +118,7 @@ def main():
 			HP = 5
 			current_HP = HP
 			Stamina = 5
+			current_stamina = stamina
 			Intelligence = 1
 			Wisdom = 1
 			Luck = 1
@@ -122,6 +130,7 @@ def main():
 			HP = 5
 			current_HP = HP
 			Stamina = 10
+			current_stamina = Stamina 
 			Intelligence = 1
 			Wisdom = 1
 			Luck = 1
@@ -134,195 +143,44 @@ def main():
 
 
 	def enemy_options():
-	
-		def enemy_one():
-			string name = "Mud Monster"
-			int hp = (random.randint(character_level,character_level*3))
-			int stamina = 5
-			int defense = 0
-			int xp_worth = (random.randint(hp*1.5,hp*2.5))
-			
-		def enemy_two():
-			string name = "Random Soldier" 
-			int hp = (random.randint(character_level,character_level*3))
-			int stamina = 3
-			int defense = 1
-			int xp_worth = (random.randint(hp*1.5,hp*2.5))
-		
-		def enemy_three():
-			string name = "hyperMouse Ninja"
-			int hp = (random.randint(character_level,character_level*3))
-			int stamina = 10
-			int defense = 2
-			int xp_worth = (random.randint(hp*1.5,hp*2.5))
-		
-		def enemy_four():
-			string name = "Mole People" 
-			int hp = (random.randint(character_level,character_level*3))
-			int stamina = 5
-			int defense = 1
-			int xp_worth = (random.randint(hp*1.5,hp*2.5))
-		
-		def enemy_five():
-			string name = "Gargoyle"
-			int hp = (random.randint(character_level,character_level*3))
-			int stamina = 2
-			int defense = 5
-			int xp_worth = (random.randint(hp*1.5,hp*2.5))
+		enemies = []
+		enemies.add(1, "Mud Monster", 0,0)
+		enemies.add(2, "Random Solider", 3, 1)
+		enemies.add(3, "hyperMouse Ninja",10,2)
+		enemies.add(4, "Mole People",5,1)
+		enemies.add(5, "Gargoyle",2,5)
 		
 	def item_options(): #these items need to be recoded as objects 
+	
+		drop_items_food = []
 		
-		def potion():
-			name = "Potion"
-			description = "This adds 5 HP"
-			worth = 1
-			drop_percentage = 35
+		# Item ID, Name, Description, Worth in Gold, Drop Percent
+	
+		drop_items_food.add(1, "Potion", "This adds 5 HP", 1, 35)
+		drop_items_food.add(2, "Hyper Potion", "This adds 10 HP", 2, 15)
+		drop_items_food.add(3, "Super Potion", "This adds 20 HP", 5, 5)
+		drop_items_food.add(4, "Apple", "This adds 5 Stamina", 2, 35)
+		drop_items_food.add(5, "Chocolate Bar", "This adds 10 Stamina", 5, 15)
+		drop_items_food.add(6, "Fruit Smoothie", "This adds 10 Stamina and 5 HP", 7, 10)
+		drop_items_food.add(7, "Chicken Breast", "This adds 20 Stamina" 7, 10)
+		drop_items_food.add(8, "Avocado Toast", "This adds 5 Stamina and 5 HP. It also increases your Wisdom by 1", 10, 5)
 		
-		def hyper_potion():
-			name = "Hyper Potion"
-			description = "This adds 10 HP"
-			worth = 2
-			drop_percentage = 15
+		drop_items_armor = []
 		
-		def super_portion():
-			name = "Super Potion"
-			description = "This adds 20 HP"
-			worth = 5
-			drop_percentage = 5
-		
-		def apple():
-			name = "Apple"
-			description = "This adds 5 Stamina" 
-			worth = 2
-			drop_percentage = 35
-		
-		def chocolate_bar():
-			name = "Chocolate Bar" 
-			description = "This adds 10 Stamina" 
-			worth = 5
-			drop_percentage = 15
-		
-		def fruit_smoothie():
-			name = "Fruit Smoothie"
-			description = "This adds 10 Stamina and 5 HP"
-			worth = 7
-			drop_percentage = 10
-			
-		def chicken_breast():
-			name = "Chicken Breast"
-			description = "This adds 20 Stamina"
-			worth = 7
-			drop_percentage = 5
-		
-		def avocado_toast():
-			name = "Avocado Toast"
-			description = "This adds 5 Stamina and 5 HP. It also increases your Wisdom by 1" 
-			worth = 10
-			drop_percentage = 5
-			
-		def basic_chest_armour():
-			name = "Basic Chest Armour" 
-			description = "Adds 2 to Defense when equipped"
-			worth = 1
-			drop_percentage = 30
-			max = 1
-			ID_Type = 1 #identifies as chest armor so that I can tell the program you can only have 1 at a time
-			
-		def advance_chest_armour():
-			name = "Advance Chest Armour"
-			description = "Adds 5 to Defense and subtracts 2 from Strength when equipped"
-			worth = 3
-			drop_percentage = 20
-			max = 1
-			ID_Type = 1
-		
-		def basic_sword():
-			name = "Basic Sword" 
-			description = "Adds 2 attack when equipped"
-			worth = 1
-			drop_percentage = 30
-			max =1 
-			ID_Type = 2
-			
-		def advance_sword():
-			name = "Advance Sword"
-			description = "Adds 5 attack when equipped"
-			worth = 3
-			drop_percentage = 20
-			max = 1
-			ID_Type = 2
-			
-		def basic_shield():
-			name = "Basic Shield"
-			description = "Adds 1 to defense and subtracts 1 from strength when equipped"
-			worth = 1
-			drop_percentage = 30
-			max = 1
-			ID_Type = 3
-			
-		def advance_shield():
-			name = "Advance Shield" 
-			description = "Adds 2 to defense, subtracts 1 from strength, and subtracts 2 from dexterity"
-			worth = 3 
-			drop_percentage = 20
-			max = 1 
-			ID_Type = 3
-			
-		def basic_crossbow():
-			name = "Basic Crossbow"
-			description = "Adds 5 to attack when equipped"
-			worth = 3
-			drop_percentage = 20
-			max = 1
-			ID_Type = 4
-			
-		def advance_crossbow():
-			name = "Advance Crossbow"
-			description = "Adds 12 to attack and subtracts 2 from strength when equipped"
-			worth = 10
-			drop_percentage = 10
-			max = 1 
-			ID_Type = 4
-			
-		def basic_helmet():
-			name = "Basic Helmet" 
-			description = "Adds 1 to defense when equipped"
-			worth = 1
-			drop_percentage = 35
-			max = 1
-			ID_Type = 5
-			
-		def advance_helmet():
-			name = "Advance Helmet" 
-			description = "Adds 3 to defense and 1 to stamina when equipped" 
-			worth = 2
-			drop_percentage = 20
-			max = 1 
-			ID_Type = 5
-			
-		def basic_leggings()
-			name = "Basic Leggings"
-			description = "Adds 1 defense when equipped"
-			worth = 1
-			drop_percentage = 30
-			max = 1
-			ID_Type= 6
-			
-		def advance_leggings():
-			name = "Advance Leggings"
-			description = "Adds 3 defense and subtracts 1 dexterity when equipped"
-			worth = 3 
-			drop_percentage = 20
-			max = 1
-			ID_Type = 6
-			
-		def chainmail():
-			name = "Chainmail"
-			description = "Extra underbody armour. Add 1 to defense when equipped"
-			worth = 1
-			drop_percentage = 30
-			max = 1
-			ID_Type = 7
+		#Item ID, Item Type ID to determine equipability, name, description, worth in gold, drop percentage
+		drop_items_armor.add(1, 1, "Basic Chest Armor", "Adds 2 defense when equipped", 1, 30)
+		drop_items_armor.add(2, 1, "Advance Chest Armor","Adds 5 defense and subtracts 2 strength when equipped", 3, 20)
+		drop_items_armor.add(3, 2, "Basic Sword", "Adds 2 attack when equipped",  1, 30)
+		drop_items_armor.add(4, 2, "Advance Sword", "Adds 5 attack when equipped", 3, 20)
+		drop_items_armor.add(5, 3, "Basic Shield", "Adds 1 to defense and subtracts 1 from strength when equipped", 1, 30)
+		drop_items_armor.add(6, 3, "Advance Shield", "Adds 2 to defense, subtracts 1 from strength, and subtracts 2 from dexterity", 3, 20)
+		drop_items_armor.add(7, 4, "Basic Crossbow", "Adds 5 to attack when equipped", 3, 20)
+		drop_items_armor.add(8, 4, "Advance Crossbow", "Adds 12 to attack and subtracts 2 from strength when equipped", 10, 10)
+		drop_items_armor.add(9, 5, "Basic Helmet", "Adds 1 to defense when equipped", 1, 15)
+		drop_items_armor.add(10, 5, "Advance Helmet", "Adds 3 to defense and 1 to stamina when equipped", 2, 20)
+		drop_items_armor.add(11, 6, "Basic Leggings", "Adds 1 defense when equipped", 1, 30)
+		drop_items_armor.add(11, 6, "Advance Leggings", "Adds 3 defense and subtracts 1 dexterity when equipped", 3, 20)
+		drop_items_armor.add(12, 7, "Chainmail", "Extra underbody armour. Add 1 to defense when equipped", 1, 30)
 			
 	def level_up(int which_level):
 	
@@ -369,15 +227,59 @@ def main():
 			
 	def fight_enemy():
 		global current_HP
-		#CODE ENEMY FIGHTING
-		#ADD XP
+		enemy_type = randint(1,5)
+		enemy_HP = (random.randint(character_level,character_level*3))
+		enemy_current_HP = enemy_HP
+		xp_worth = (random.randint(hp*1.5,hp*2.5))
+		enemy_name = enemies.get(enemy_type[2])
+		enemy_stamina = enemies.get(enemy_type[3])
+		enemy_defense = enemies.get(enemy_type[4])
 		
 		while enemy_current_HP> 0:
-			special_ability() #checks for characters special ability
+			if current_HP <= 0: #checks to make sure player isn't dead
+				print("You died. Feel free to try again.")
+				sys.exit()
+			else:
+				if current_stamina <=0:
+					special_ability() #checks for characters special ability
+					print("You can't attack! You need more stamina!)
+					equip_item() #allows user to use item to get more stamina
+					print("The " + enemy_name + " is attacking you!")
+					current_HP = current_HP - (enemy_attack-defense)
+					enemy_stamina = enemy_stamina-1
+					print("You've lost " + enemy_attack-defense + " HP. Your foes current stamina is " + enemy_stamina)
+				else:
+					if enemy_stamina <=0:
+						print("The enemy can no longer fight!")
+						print("You attacked the " + enemy_name + "!")
+						enemy_current_HP = enemy_current_HP - (attack-enemy_defense)
+						print("You attacked for " + attack-enemy_defense + " HP! Lost 1 Stamina")
+						current_stamina = current_stamina-1
+					else:
+						special_ability() #checks for characters special ability
+						print("You attacked the " + enemy_name + "!")
+						enemy_current_HP = enemy_current_HP - (attack-enemy_defense)
+						print("You attacked for " + attack-enemy_defense + " HP! Lost 1 Stamina")
+						current_stamina = current_stamina-1
+						print("The " + enemy_name + " is attacking you!")
+						current_HP = current_HP - (enemy_attack-defense)
+						enemy_stamina = enemy_stamina-1
+						print("You've lost " + enemy_attack-defense + " HP. Your foes current stamina is " + enemy_stamina)
 		
+		XP = XP + xp_worth
 		level_up_check()
 	
 	def special_ability():
+		if character = "Mage":
+		
+		else if character = "Elf":
+		
+		else if character = "Human":
+		
+		else if character = "Goblin":
+		
+		else: #this one is if fairys exist
+		
 	
 	def level_up_check(): #This will check to see if user has enough XP to go up in level
 	
