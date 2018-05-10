@@ -20,6 +20,13 @@ current_HP = 0
 current_stamina = 0
 #these are global variables
 
+CREATE TABLE IF NOT EXISTS score (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  name varchar(45),
+  score int(11),
+  PRIMARY KEY (id)
+);
+
 	
 
 def character_creation():
@@ -339,6 +346,8 @@ def drop_item():
 def score():
 	score = 0
 	score = XP + score + level + inventory_count + current_HP
+	INSERT INTO score(name) VALUES (name)
+	INSERT INTO score(score) VALUES (score) #this adds your score and your character name to the global table
 	return score
 		
 def equip_item():	
@@ -357,6 +366,7 @@ def equip_item():
 			
 def main():
 	global name
+	gameOpen = true
 	enemy_options()
 	name=input("Welcome brave warrior! What is your " + name + "?")
 	print("Your quest is to battle to the great beyond and retrieve what may lie there. The people of this hard drive believe there to be great riches which control these lands.")
@@ -369,8 +379,9 @@ def main():
 		
 	while steps < 60:
 		take_a_step()
+		gameOpen = true
 			
-	
+	gameOpen= false
 	print("Congratulations on your journey, " + name + "!")
 	print("You've fought long and hard. You've even made it all the way to level " + level + "!")
 	print("What a proud " + character + " you must be!")
