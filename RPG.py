@@ -1,6 +1,12 @@
 from random import randint
 import math
 import sys
+import pyrebase config = {  "apiKey": "apiKey",  "authDomain": "projectId.firebaseapp.com",  "databaseURL": "https://databaseName.firebaseio.com",  "storageBucket": "projectId.appspot.com",  "serviceAccount": "path/to/serviceAccountCredentials.json" } firebase = pyrebase.initialize_app(config)
+auth = firebase.auth() #authenticate a user 
+user = auth.sign_in_with_email_and_password("candy@gmail.com", "p@ssw0rd") #this would be for user signin
+user['idToken']
+
+
 
 HP = 0
 Stamina = 0
@@ -348,6 +354,8 @@ def score():
 	score = XP + score + level + inventory_count + current_HP
 	INSERT INTO score(name) VALUES (name)
 	INSERT INTO score(score) VALUES (score) #this adds your score and your character name to the global table
+	score = {"name": name, "score":score} db.child("scores") #This would add your score to firebase ???
+	#This currently hardcodes firebase so only one score is applicable. That's not what we want!
 	return score
 		
 def equip_item():	
