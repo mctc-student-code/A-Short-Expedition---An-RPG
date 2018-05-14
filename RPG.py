@@ -2,15 +2,17 @@ from random import randint
 import math
 import sys
 
+import game_config
+
 HP = 0
 Stamina = 0
 Intelligence = 0
 Wisdom = 0
 Luck = 0
 Strength = 0
-Defense = 0 
+Defense = 0
 Charisma = 0
-Dexterity = 0 
+Dexterity = 0
 character = "None"
 name = "name"
 level = 0
@@ -20,42 +22,42 @@ current_HP = 0
 current_stamina = 0
 #these are global variables
 
-	
+
 
 def character_creation():
-	
+
 	global character
 	print("You may pick a character type. Each type has different base stats.")
 	print("/n Your options are: Mage, Elf, Goblin, Human, or Fairy")
-	print("/n A Mage has a base HP + Stamina of 5, a base Wisdom of 3, and 1 for all other stats. Their special ability is a 25% chance of obtaining an extra move roll.")		
+	print("/n A Mage has a base HP + Stamina of 5, a base Wisdom of 3, and 1 for all other stats. Their special ability is a 25% chance of obtaining an extra move roll.")
 	print("/n An Elf has a base HP of 10, Stamina, Charisma, and Dexterity of 5, Wisdom of 3, Strength of 2, and 1 for all other stats. Their special ability is a 10% chance of avoiding battle.")
 	print("/n A Goblin has a base HP and Strength of 5, Stamina of 10, Defense of 2, and 0 for all other stats. Their special ability is the option to intimidate weaker [1/2 of their HP or lower] enemies from battle.")
 	print("/n A Human has a base HP and Stamina of 5, a Defense of 0, and 1 for all other stats. Their special ability is regaining 1 stamina per turn.")
 	print("/n A Fairy has a base HP of 5,  Stamina of 10, Dexterity of 3, Strength of 0, and 1 for all other stats. Their special ability is regaining 1 HP per turn.")
-		
+
 	while character == "None": #This while loop makes the player re-pick whenever they don't have a character
 		character=input("Please pick your character type. Type 'Mage, Elf, Goblin, Human, or Fairy' : ")
-	
+
 		character_stats(character)
-		
+
 		# Could soft code these values, but I hard coded them to put them in a particular order based off HP/Stamina priority and highest to weakest
-		# Maybe put the stats printer in a separate method? To just print stats. Maybe even code 'hot keys' to print certain character stats VS all at once? 
-		
+		# Maybe put the stats printer in a separate method? To just print stats. Maybe even code 'hot keys' to print certain character stats VS all at once?
+
 def character_stats():
-			#this chunk of code allows this method to change global variables 
+			#this chunk of code allows this method to change global variables
 	global HP
 	global Stamina
 	global Intelligence
 	global Wisdom
 	global Luck
 	global Strength
-	global Defense 
+	global Defense
 	global Charisma
 	global Dexterity
-	global character 
+	global character
 	global current_HP
 	global current_stamina
-		
+
 		#maybe put this in some sort of data organizer like a hashmap or array
 	if character == "Mage":
 		HP = 5
@@ -109,7 +111,7 @@ def character_stats():
 		HP = 5
 		current_HP = HP
 		Stamina = 10
-		current_stamina = Stamina 
+		current_stamina = Stamina
 		Intelligence = 1
 		Wisdom = 1
 		Luck = 1
@@ -118,49 +120,10 @@ def character_stats():
 		Charisma = 1
 		Dexterity = 3
 	else:
-		character = "None" #if the input does not match any of these, it will reset the character to none and ask for new input 
+		character = "None" #if the input does not match any of these, it will reset the character to none and ask for new input
 
 
-def enemy_options():
-	enemies = [[]]
-	enemies.insert(1, "Mud Monster", 0,0)
-	enemies.insert(2, "Random Solider", 3, 1)
-	enemies.insert(3, "hyperMouse Ninja",10,2)
-	enemies.insert(4, "Mole People",5,1)
-	enemies.insert(5, "Gargoyle",2,5)
-	
-def item_options(): #these items need to be recoded as objects 
-	
-	drop_items_food = [[]]
-		
-	# Item ID, Name, Description, Worth in Gold, Drop Percent
-	
-	drop_items_food.insert(1, "Potion", "This inserts 5 HP", 1, 35)
-	drop_items_food.insert(2, "Hyper Potion", "This inserts 10 HP", 2, 15)
-	drop_items_food.insert(3, "Super Potion", "This inserts 20 HP", 5, 5)
-	drop_items_food.insert(4, "Apple", "This inserts 5 Stamina", 2, 35)
-	drop_items_food.insert(5, "Chocolate Bar", "This inserts 10 Stamina", 5, 15)
-	drop_items_food.insert(6, "Fruit Smoothie", "This inserts 10 Stamina and 5 HP", 7, 10)
-	drop_items_food.insert(7, "Chicken Breast", "This inserts 20 Stamina", 7, 10)
-	drop_items_food.insert(8, "Avocado Toast", "This inserts 5 Stamina and 5 HP. It also increases your Wisdom by 1", 10, 5)
-	
-	drop_items_armor = [[]]
-		
-	#Item ID, Item Type ID to determine equipability, name, description, worth in gold, drop percentage
-	drop_items_armor.insert(1, 1, "Basic Chest Armor", "inserts 2 defense when equipped", 1, 30)
-	drop_items_armor.insert(2, 1, "Advance Chest Armor","inserts 5 defense and subtracts 2 strength when equipped", 3, 20)
-	drop_items_armor.insert(3, 2, "Basic Sword", "inserts 2 attack when equipped",  1, 30)
-	drop_items_armor.insert(4, 2, "Advance Sword", "inserts 5 attack when equipped", 3, 20)
-	drop_items_armor.insert(5, 3, "Basic Shield", "inserts 1 to defense and subtracts 1 from strength when equipped", 1, 30)		
-	drop_items_armor.insert(6, 3, "Advance Shield", "inserts 2 to defense, subtracts 1 from strength, and subtracts 2 from dexterity", 3, 20)
-	drop_items_armor.insert(7, 4, "Basic Crossbow", "inserts 5 to attack when equipped", 3, 20)
-	drop_items_armor.insert(8, 4, "Advance Crossbow", "inserts 12 to attack and subtracts 2 from strength when equipped", 10, 10)
-	drop_items_armor.insert(9, 5, "Basic Helmet", "inserts 1 to defense when equipped", 1, 15)
-	drop_items_armor.insert(10, 5, "Advance Helmet", "inserts 3 to defense and 1 to stamina when equipped", 2, 20)
-	drop_items_armor.insert(11, 6, "Basic Leggings", "inserts 1 defense when equipped", 1, 30)
-	drop_items_armor.insert(11, 6, "Advance Leggings", "inserts 3 defense and subtracts 1 dexterity when equipped", 3, 20)
-	drop_items_armor.insert(12, 7, "Chainmail", "Extra underbody armour. insert 1 to defense when equipped", 1, 30)
-			
+
 def level_up(which_level):
 
 	global HP
@@ -169,19 +132,19 @@ def level_up(which_level):
 	global Wisdom
 	global Luck
 	global Strength
-	global Defense 
+	global Defense
 	global Charisma
 	global Dexterity
 	global XP
 	global level
-		
+
 	HP = HP + randint(1,5)
 	Stamina = Stamina + randint(1,5)
-	
-	for i in range(3): #for loop that reiterates 3 times 
+
+	for i in range(3): #for loop that reiterates 3 times
 		trait = randint(3,9)
-			
-		if trait == 3:	
+
+		if trait == 3:
 			Intelligence = Intelligence + randint(1,3)
 		elif trait ==4:
 			Wisdom = Wisdom + randint(1,3)
@@ -189,21 +152,21 @@ def level_up(which_level):
 			Luck = Luck + randint(1,3)
 		elif trait == 6:
 			Strength = Strength + randint(1,3)
-		elif trait == 7: 
+		elif trait == 7:
 			Defense = Defense + randint(1,3)
 		elif trait == 8:
 			Charisma = Charisma + randint(1,3)
-		else: 
+		else:
 			Dexterity = Dexterity + randint(1,3)
-				
+
 		XP = which_level-XP #subtracts XP used to level up
-			
+
 		level = level+1 #inserts 1 level to global variable
-			
-		level_up_check() #This is used to make sure code doesn't break and forget to level up player that can go up two levels at once 
-			
+
+		level_up_check() #This is used to make sure code doesn't break and forget to level up player that can go up two levels at once
+
 		#insert drop type values to try and increase the variety of dropped items
-			
+
 def fight_enemy():
 	global current_HP
 	enemy_type = randint(1,5)
@@ -213,7 +176,7 @@ def fight_enemy():
 	enemy_name = enemies.get(enemy_type[2])
 	enemy_stamina = enemies.get(enemy_type[3])
 	enemy_defense = enemies.get(enemy_type[4])
-		
+
 	while enemy_current_HP> 0:
 		if current_HP <= 0: #checks to make sure player isn't dead
 			print("You died. Feel free to try again.")
@@ -244,81 +207,81 @@ def fight_enemy():
 					current_HP = current_HP - (enemy_attack-defense)
 					enemy_stamina = enemy_stamina-1
 					print("You've lost " + enemy_attack-defense + " HP. Your foes current stamina is " + enemy_stamina)
-		
+
 	XP = XP + xp_worth
 	level_up_check()
-	
+
 def special_ability():
 	global steps
 	global current_stamina
 	if character == "Mage":
 		roll = randint(1,4)
-		if roll == 1:	
+		if roll == 1:
 			roll_die = randint(1,6)
 			steps = steps+roll_die
 			print("You inserted extra spaces!!!")
 		else:
 			print("Nothing happened")
-				
+
 	elif character == "Elf":
 		roll == randint(1,10)
-		if roll == 1:	
+		if roll == 1:
 			print("You skip this battle!")
-				
+
 		else:
 			print("Nothing happened")
 	elif character == "Human":
 		current_stamina = current_stamina+1
 	elif character == "Goblin":
-		if enemy_HP <= current_HP*.5: 
+		if enemy_HP <= current_HP*.5:
 			print("You intimidated your opponent!")
 		else:
 			print("Nothing happened")
 	else: #this one is if fairys exist
 		current_HP = current_HP+1
-		
-	
+
+
 def level_up_check(): #This will check to see if user has enough XP to go up in level
-	
+
 	required_xp = 0
-	
+
 	if level >=4: #sets XP cap at 1500 after level 4
 		required_XP=1500
-	else:	
-		required_XP=250*(level+1) #designs XP increments 
-		
-	if XP>required_XP: #tests if level up is required 
+	else:
+		required_XP=250*(level+1) #designs XP increments
+
+	if XP>required_XP: #tests if level up is required
 		level_up(required_XP)
 	else:
 		required_xp = 0
-			
+
 def boss_check(): #This checks to see if the player has moved enough spaces to go further in the adventure
 	if steps >= 10 & steps < 30:
 		boss_fight()
 	elif steps >= 30 & steps < 60:
 		boss_fight()
-	else: 
+	else:
 		boss_fight()
-			
+
 def boss_fight():
 	if steps >= 10 & steps < 30:
 		#CODE FIRST BOSS
 		print("You've fought hard through the unknown and up ahead you see your gate")
 		print("A creature fades in and out of existence. You can't make out much before you see flashing jaws lunge to attack you!")
-		
+
 		#Is there a way to overwrite code in the fight sequence? Or should I make a new method for each boss fight?
-		
+
 		print("You have defeated the dreaded ghostly foe and pass the gate into the Land of Disk Fragments")
 	elif steps >= 30 & steps < 60:
 		#CODE SECOND BOSS
 		print("To your left a roller coaster whizzes by, and on your right you spot a tilt-a-whirl spinning your E Drive's contents.  Further down the center a hole in the ground opens up. The recycling bin. The coast looks clear so you step forward.")
 		print("Your toes feel the edge of hole when a force pulls you back. A gruesome clown grins his teeth. Bits of disk protruding out of his body.")
-	else: 
+	else:
 		#CODE FINAL BOSS
 		print("The harddrive glimmers below a pool of backlog. Your time has come. You reach toward the pool when a shadow overtakes the clear waters(?) The recycling bin was not quite as empty as you thought.... The conglomeration grabs hold of your wrist with it's folder fingers and application icon biceps and drags you beneath the depth.")
-			
-		
-		
+
+
+
 def take_a_step():
 	global steps #allows you to manipulate steps counter
 	boss_check() #checks if you've earned a boss yet
@@ -330,34 +293,35 @@ def take_a_step():
 	drop_item() #drops item
 	drop_item()
 	equip_item()
-	
+
 def drop_item():
 	print("TO DO")
 	#CODE ITEM DROP. USE PERCENTAGES
-	
-	
+
+
 def score():
 	score = 0
 	score = XP + score + level + inventory_count + current_HP
 	return score
-		
-def equip_item():	
+
+def equip_item():
 	answer = input("Would you like to equip/unequip or use an item? (E or U or N")
 	while answer != N:
 		item = input("Please enter the item you would like to equip or use")
 		if inventory.get(item):
 			break
-			
+
 		elif equip.get(item):
 			break
 		else:
 			print("That item is not in your inventory")
 		answer = input("Would you like to equip or use an item? (Y or N")
-			
-			
+
+
 def main():
 	global name
-	enemy_options()
+
+	game_objects = game_config.setup()   # A dictionary of things in the game, organized by type
 	name=input("Welcome brave warrior! What is your " + name + "?")
 	print("Your quest is to battle to the great beyond and retrieve what may lie there. The people of this hard drive believe there to be great riches which control these lands.")
 	character_creation()
@@ -366,19 +330,19 @@ def main():
 	print("Once through these folders you may come across a theme park of disk fragmentation. From here you may be tempted to wander through many-a application and plenty of shiny bits and bobbles. Deep in the core is where you seek.")
 	print("Down the rabbithole you fall. To find the treasures this harddrive holds you must finally saunter the tombs of data past in the fiery holes of the recycling bin!")
 	print("Safe travels, " + name + ".")
-		
+
 	while steps < 60:
 		take_a_step()
-			
-	
+
+
 	print("Congratulations on your journey, " + name + "!")
 	print("You've fought long and hard. You've even made it all the way to level " + level + "!")
 	print("What a proud " + character + " you must be!")
 	print("You've collected lots of items and battled fearlessly along the way.")
 	print("Through this effort and riches you've scored " + score() + " points! To travel again just re-run this code!")
-	
-	
-	
-	
+
+
+
+
 if __name__ == "__main__":
 	main()
